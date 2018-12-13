@@ -10,6 +10,22 @@ public class News {
     private String img;
     private String time;
 
+    public News() {
+    }
+
+    public News(String id, String title, String img) {
+        this.id = id;
+        this.title = title;
+        this.img = img;
+    }
+
+    public News(String id, String title, String img, String time) {
+        this.id = id;
+        this.title = title;
+        this.img = img;
+        this.time = time;
+    }
+
     public String getId() {
         return id;
     }

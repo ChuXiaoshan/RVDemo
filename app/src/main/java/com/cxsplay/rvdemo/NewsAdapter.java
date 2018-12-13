@@ -1,8 +1,8 @@
 package com.cxsplay.rvdemo;
 
+import android.annotation.SuppressLint;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
-import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
@@ -10,8 +10,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import com.cxsplay.rvdemo.bean.News;
+import com.cxsplay.rvdemo.common.ImageLoader;
 import com.cxsplay.rvdemo.databinding.ItemListBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,7 +27,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     private ItemTouchHelper helper;
 
     public void setList(List<News> list) {
-        this.list = list;
+        this.list = new ArrayList<>(list);
+    }
+
+    public List<News> getList() {
+        return list;
     }
 
     public NewsAdapter(ItemTouchHelper helper) {
@@ -43,20 +49,20 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     }
 
     @Override
+    @SuppressLint("ClickableViewAccessibility")
     public void onBindViewHolder(@NonNull final NewsViewHolder holder, int i) {
         News news = list.get(i);
-        holder.bind.ivDrag.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getActionMasked()) {
-                    case MotionEvent.ACTION_DOWN:
-                        helper.startDrag(holder);
-                        break;
-                    default:
-                        break;
-                }
-                return true;
+        holder.bind.tvContent.setText(news.getTitle());
+        ImageLoader.loadImageByUrl(holder.bind.iv, news.getImg());
+        holder.bind.ivDrag.setOnTouchListener((v, event) -> {
+            switch (event.getActionMasked()) {
+                case MotionEvent.ACTION_DOWN:
+                    helper.startDrag(holder);
+                    break;
+                default:
+                    break;
             }
+            return true;
         });
     }
 
