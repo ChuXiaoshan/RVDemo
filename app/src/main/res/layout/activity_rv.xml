@@ -2,21 +2,20 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-    </data>
-
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/srl"
-
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv"
             android:layout_width="match_parent"
-
             android:layout_height="match_parent"
+            android:background="#c5cae9"
+            android:clipToPadding="false"
+            android:padding="6dp"
             tools:listitem="@layout/item_list" />
+
     </android.support.v4.widget.SwipeRefreshLayout>
+
 </layout>

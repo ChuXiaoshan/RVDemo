@@ -13,7 +13,6 @@ import com.cxsplay.rvdemo.bean.News;
 import com.cxsplay.rvdemo.common.ImageLoader;
 import com.cxsplay.rvdemo.databinding.ItemListBinding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,7 +26,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     private ItemTouchHelper helper;
 
     public void setList(List<News> list) {
-        this.list = new ArrayList<>(list);
+        this.list = list;
     }
 
     public List<News> getList() {
