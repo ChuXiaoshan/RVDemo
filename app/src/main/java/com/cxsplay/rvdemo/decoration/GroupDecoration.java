@@ -12,15 +12,14 @@ import android.view.View;
 /**
  * Created by CxS on 2018/12/14
  */
-public class SimpleDividerDecoration extends RecyclerView.ItemDecoration {
+public class GroupDecoration extends RecyclerView.ItemDecoration {
 
 
     private final Rect mBounds = new Rect();
-    private final RectF mBoundsF = new RectF();
     private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);
     private int dividerHeight;
 
-    public SimpleDividerDecoration(int dividerHeight, @ColorInt int color) {
+    public GroupDecoration(int dividerHeight, @ColorInt int color) {
         paint.setColor(color);
         this.dividerHeight = dividerHeight;
     }
@@ -48,5 +47,10 @@ public class SimpleDividerDecoration extends RecyclerView.ItemDecoration {
             canvas.drawRoundRect(this.mBoundsF, 1, 1, paint);
         }
         canvas.restore();
+    }
+
+    @Override
+    public void onDrawOver(@NonNull Canvas c, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
+
     }
 }

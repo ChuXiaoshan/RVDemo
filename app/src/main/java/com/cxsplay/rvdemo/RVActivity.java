@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.Menu;
@@ -64,7 +64,8 @@ public class RVActivity extends AppCompatActivity {
         touchHelper.attachToRecyclerView(bind.rv);
 
         adapter = new NewsAdapter(touchHelper);
-        bind.rv.setLayoutManager(new LinearLayoutManager(this));
+//        bind.rv.setLayoutManager(new LinearLayoutManager(this));
+        bind.rv.setLayoutManager(new GridLayoutManager(this, 3));
         bind.rv.setAdapter(adapter);
         setDecoration();
         getList();
@@ -77,7 +78,7 @@ public class RVActivity extends AppCompatActivity {
         DividerItemDecoration divider = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
 //        divider.setDrawable(Objects.requireNonNull(ContextCompat.getDrawable(this, R.drawable.decoriation1)));
 //        bind.rv.addItemDecoration(divider);
-        bind.rv.addItemDecoration(new SimpleDividerDecoration(ConvertUtils.dp2px(4), Color.parseColor("#ab47bc")));
+        bind.rv.addItemDecoration(new SimpleDividerDecoration(ConvertUtils.dp2px(2), Color.parseColor("#ab47bc")));
     }
 
     @Override
