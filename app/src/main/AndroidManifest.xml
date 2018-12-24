@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".RVActivity" />
+        <activity android:name=".PinchViewActivity" />
     </application>
 
 </manifest>

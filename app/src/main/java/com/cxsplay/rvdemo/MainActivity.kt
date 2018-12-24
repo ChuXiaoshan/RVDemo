@@ -16,7 +16,9 @@ class MainActivity : AppCompatActivity() {
     private fun init() {
         btn1.setOnClickListener {
             startActivity(Intent(this, RVActivity::class.java))
-//            Toast.makeText(this, "hello world", Toast.LENGTH_SHORT).show()
+        }
+        btn2.setOnClickListener {
+            startActivity(Intent(this, PinchViewActivity::class.java))
         }
     }
 }
