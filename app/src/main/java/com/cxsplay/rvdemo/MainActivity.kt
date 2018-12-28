@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         }
         btn4.setOnClickListener {
             val content =
-                "openApp.jdMobile://virtual?params={\"category\":\"jump\",\"des\":\"productDetail\",\"skuId\":\"1157957\",\"sourceType\":\"JSHOP_SOURCE_TYPE\",\"sourceValue\":\"JSHOP_SOURCE_VALUE\"}"
+                "openApp.jdMobile://virtual?params={\"category\":\"jump\",\"des\":\"productDetail\",\"skuId\":\"100000287113\",\"sourceType\":\"JSHOP_SOURCE_TYPE\",\"sourceValue\":\"JSHOP_SOURCE_VALUE\"}"
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(content))
             startActivity(intent)
         }
