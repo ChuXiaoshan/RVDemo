@@ -22,6 +22,10 @@
         </activity>
         <activity android:name=".RVActivity" />
         <activity android:name=".PinchViewActivity" />
+        <activity
+            android:name=".qqui.QQUIActivity"
+            android:theme="@style/QMUITheme" />
+        <activity android:name=".brvah.BRVAHActivity" />
     </application>
 
 </manifest>

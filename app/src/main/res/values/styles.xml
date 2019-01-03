@@ -8,4 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Base application theme. -->
+    <style name="QMUITheme" parent="QMUI.Compat">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#EB3E3E</item>
+        <item name="colorPrimaryDark">#EB3E3E</item>
+        <item name="colorAccent">#EB3E3E</item>
+    </style>
+
 </resources>
