@@ -7,6 +7,7 @@ public class SimpleData {
 
     private String title;
     private String icon;
+    private int iconRes;
 
     public SimpleData() {
     }
@@ -14,6 +15,12 @@ public class SimpleData {
     public SimpleData(String title, String icon) {
         this.title = title;
         this.icon = icon;
+    }
+
+    public SimpleData(String title, String icon, int iconRes) {
+        this.title = title;
+        this.icon = icon;
+        this.iconRes = iconRes;
     }
 
     public String getTitle() {
@@ -32,11 +39,20 @@ public class SimpleData {
         this.icon = icon;
     }
 
+    public int getIconRes() {
+        return iconRes;
+    }
+
+    public void setIconRes(int iconRes) {
+        this.iconRes = iconRes;
+    }
+
     @Override
     public String toString() {
         return "SimpleData{" +
                 "title='" + title + '\'' +
                 ", icon='" + icon + '\'' +
+                ", iconRes=" + iconRes +
                 '}';
     }
 }

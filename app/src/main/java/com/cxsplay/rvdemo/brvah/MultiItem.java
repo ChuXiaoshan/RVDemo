@@ -11,7 +11,7 @@ public class MultiItem implements MultiItemEntity {
     public final static int TYPE_ACTIO1 = 1;
     public final static int TYPE_SINGLE_IMG = 2;
     public final static int TYPE_SINGLE_PRODUCT = 3;
-    public final static int TYPE_HALF_PRODUCT = 4;
+    public final static int TYPE_TRIPLE = 4;
     public final static int TYPE_QUARTER_PRODUCT = 5;
 
     private int type;

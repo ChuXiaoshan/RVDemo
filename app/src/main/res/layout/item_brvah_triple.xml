@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/gl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.45" />
+
+        <ImageView
+            android:id="@+id/iv_left"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="1:0.5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/gl"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@color/red300" />
+
+        <ImageView
+            android:id="@+id/iv_middle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="3dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_left"
+            app:layout_constraintLeft_toRightOf="@+id/gl"
+            app:layout_constraintRight_toLeftOf="@+id/iv_right"
+            app:layout_constraintTop_toTopOf="@+id/iv_left"
+            tools:background="@color/red400" />
+
+        <ImageView
+            android:id="@+id/iv_right"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="3dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_left"
+            app:layout_constraintLeft_toRightOf="@+id/iv_middle"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_left"
+            tools:background="@color/red500" />
+
+        <ImageView
+            android:id="@+id/iv_b_left"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="3dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="1:0.5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/gl"
+            app:layout_constraintTop_toBottomOf="@+id/iv_left"
+            tools:background="@color/red300" />
+
+        <ImageView
+            android:id="@+id/iv_b_middle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="3dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_b_left"
+            app:layout_constraintLeft_toRightOf="@+id/gl"
+            app:layout_constraintRight_toLeftOf="@+id/iv_b_right"
+            app:layout_constraintTop_toTopOf="@+id/iv_b_left"
+            tools:background="@color/red400" />
+
+        <ImageView
+            android:id="@+id/iv_b_right"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="3dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_b_left"
+            app:layout_constraintLeft_toRightOf="@+id/iv_b_middle"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_b_left"
+            tools:background="@color/red500" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

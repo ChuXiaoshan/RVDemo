@@ -33,14 +33,39 @@ public class BRVAHActivity extends AppCompatActivity {
 
     private void initData() {
         list = new ArrayList<>();
-        list.add(new MultiItem(MultiItem.TYPE_VP, 4, new SimpleData("hello1", "")));
-        list.add(new MultiItem(MultiItem.TYPE_ACTIO1, 1, new SimpleData("hello1", "")));
-        list.add(new MultiItem(MultiItem.TYPE_ACTIO1, 1, new SimpleData("hello2", "")));
-        list.add(new MultiItem(MultiItem.TYPE_ACTIO1, 1, new SimpleData("hello3", "")));
-        list.add(new MultiItem(MultiItem.TYPE_ACTIO1, 1, new SimpleData("hello4", "")));
-        list.add(new MultiItem(MultiItem.TYPE_ACTIO1, 2, new SimpleData("hello5", "")));
-        list.add(new MultiItem(MultiItem.TYPE_ACTIO1, 1, new SimpleData("hello6", "")));
+        list.add(new MultiItem(MultiItem.TYPE_VP, 4, getPageData()));
+        list.add(new MultiItem(MultiItem.TYPE_ACTIO1, 1, new SimpleData("淘宝搜", "", R.mipmap.home_icon_taobao)));
+        list.add(new MultiItem(MultiItem.TYPE_ACTIO1, 1, new SimpleData("京东搜", "", R.mipmap.home_icon_jingdong)));
+        list.add(new MultiItem(MultiItem.TYPE_ACTIO1, 1, new SimpleData("天猫搜", "", R.mipmap.home_icon_tianmao)));
+        list.add(new MultiItem(MultiItem.TYPE_ACTIO1, 1, new SimpleData("多多搜", "", R.mipmap.home_icon_pinduoduo)));
+        list.add(new MultiItem(MultiItem.TYPE_TRIPLE, 4, getTripleData()));
+        list.add(new MultiItem(MultiItem.TYPE_SINGLE_IMG, 4, getTripleData()));
+        list.add(new MultiItem(MultiItem.TYPE_SINGLE_PRODUCT, 4, new SimpleData("多多搜", "", R.mipmap.home_icon_pinduoduo)));
+        list.add(new MultiItem(MultiItem.TYPE_SINGLE_PRODUCT, 4, new SimpleData("多多搜", "", R.mipmap.home_icon_pinduoduo)));
+        list.add(new MultiItem(MultiItem.TYPE_SINGLE_PRODUCT, 4, new SimpleData("多多搜", "", R.mipmap.home_icon_pinduoduo)));
+        list.add(new MultiItem(MultiItem.TYPE_SINGLE_PRODUCT, 4, new SimpleData("多多搜", "", R.mipmap.home_icon_pinduoduo)));
+        list.add(new MultiItem(MultiItem.TYPE_SINGLE_PRODUCT, 4, new SimpleData("多多搜", "", R.mipmap.home_icon_pinduoduo)));
+    }
 
+    private List<SimpleData> getPageData() {
+        List<SimpleData> list = new ArrayList<>();
+        list.add(new SimpleData("", "https://wallpapers.wallhaven.cc/wallpapers/thumb/small/th-729362.jpg"));
+        list.add(new SimpleData("", "https://wallpapers.wallhaven.cc/wallpapers/thumb/small/th-726443.jpg"));
+        list.add(new SimpleData("", "https://wallpapers.wallhaven.cc/wallpapers/thumb/small/th-387462.jpg"));
+        list.add(new SimpleData("", "https://wallpapers.wallhaven.cc/wallpapers/thumb/small/th-718566.jpg"));
+        list.add(new SimpleData("", "https://wallpapers.wallhaven.cc/wallpapers/thumb/small/th-727431.jpg"));
+        return list;
+    }
+
+    private List<SimpleData> getTripleData() {
+        List<SimpleData> list = new ArrayList<>();
+        list.add(new SimpleData("", "https://img.alicdn.com/simba/img/TB1lOQvxXkoBKNjSZFkSuv4tFXa.jpg"));
+        list.add(new SimpleData("", "https://img.alicdn.com/tfs/TB1URS1zMHqK1RjSZFgXXa7JXXa-520-280.jpg_q90_.webp"));
+        list.add(new SimpleData("", "https://img.alicdn.com/simba/img/TB19QMcywHqK1RjSZFEwu3GMXXa.png"));
+        list.add(new SimpleData("", "https://img.alicdn.com/simba/img/TB19QMcywHqK1RjSZFEwu3GMXXa.png"));
+        list.add(new SimpleData("", "https://img.alicdn.com/simba/img/TB19QMcywHqK1RjSZFEwu3GMXXa.png"));
+        list.add(new SimpleData("", "https://img.alicdn.com/simba/img/TB19QMcywHqK1RjSZFEwu3GMXXa.png"));
+        return list;
     }
 
 }

@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.cxsplay.rvdemo.R;
 import com.cxsplay.rvdemo.common.ImageLoader;
-import com.cxsplay.rvdemo.databinding.ItemVpBinding;
+import com.cxsplay.rvdemo.databinding.ItemBrvahVpItemBinding;
 
 import java.util.List;
 
@@ -39,7 +39,7 @@ public class UltraPagerAdapter extends PagerAdapter {
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        ItemVpBinding vpBinding = DataBindingUtil.inflate(layoutInflater, R.layout.item_vp, null, false);
+        ItemBrvahVpItemBinding vpBinding = DataBindingUtil.inflate(layoutInflater, R.layout.item_brvah_vp_item, null, false);
         SimpleData simpleData = data.get(position);
         ImageLoader.loadImageByUrl(vpBinding.iv, simpleData.getIcon());
         container.addView(vpBinding.getRoot());
