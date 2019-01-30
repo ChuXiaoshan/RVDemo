@@ -52,4 +52,5 @@ dependencies {
         transitive = true
         exclude group: 'com.android.support'
     }
+    implementation 'com.tencent:mmkv:1.0.17'
 }
