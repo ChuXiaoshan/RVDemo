@@ -59,7 +59,8 @@ public class MMKVActivity extends AppCompatActivity {
 //        String content = "alipays://platformapi/startapp?appId=66666674";
 //        String content = "alipays://platformapi/startapp?appId=20000056";
 //        String content = "weixin://";
-        String content = "alipayqr://platformapi/startapp?saId=10000007&qrcode=https://qr.alipay.com/fkx00680w9drjx4h54fso15?t=1548819801392";
+//        String content = "alipayqr://platformapi/startapp?saId=10000007&qrcode=https://qr.alipay.com/fkx00680w9drjx4h54fso15?t=1548819801392";
+        String content = "weixin://wap/pay?appid%3Dwx2421b1c4370ec43b%26noncestr%3D3e84679af4efab5f32ee9ea01b2ec290%26package%3DWAP%26prepayid%3Dwx20160504154919fdacd7bc0d0127918780%26timestamp%3D1462348159%26sign%3DC40DC4BB970049D6830BA567189B463B";
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(content));
         ActivityUtils.startActivity(intent);
     }
