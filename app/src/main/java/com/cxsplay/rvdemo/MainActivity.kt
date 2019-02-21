@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.cxsplay.rvdemo.brvah.BRVAHActivity
 import com.cxsplay.rvdemo.mmkv.MMKVActivity
+import com.cxsplay.rvdemo.photo.PhotoActivity
 import com.cxsplay.rvdemo.qqui.QQUIActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -25,7 +26,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, PinchViewActivity::class.java))
         }
         btn3.setOnClickListener {
-//                        val content = "pinduoduo://com.xunmeng.pinduoduo/duo_coupon_landing.html?goods_id=580820933&pid=10001_20999"
+            //                        val content = "pinduoduo://com.xunmeng.pinduoduo/duo_coupon_landing.html?goods_id=580820933&pid=10001_20999"
 ////            val content = "alipayqr://platformapi/startapp?saId=10000007&qrcode=https://www.jianshu.com/p/b49d657ed49e"
 //            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(content))
 //            startActivity(intent)
@@ -46,6 +47,9 @@ class MainActivity : AppCompatActivity() {
         }
         btn7.setOnClickListener {
             startActivity(Intent(this, MMKVActivity::class.java))
+        }
+        btn8.setOnClickListener {
+            startActivity(Intent(this, PhotoActivity::class.java))
         }
     }
 }

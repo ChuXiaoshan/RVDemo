@@ -53,4 +53,6 @@ dependencies {
         exclude group: 'com.android.support'
     }
     implementation 'com.tencent:mmkv:1.0.17'
+
+    implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
 }
