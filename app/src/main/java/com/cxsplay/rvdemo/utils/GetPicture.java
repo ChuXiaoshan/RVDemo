@@ -28,8 +28,8 @@ import java.util.Locale;
 public class GetPicture {
     public static int RESULT_CODE_OK = 0x00913;
     public static int RESULT_CODE_FAILED = 0x00914;
-    public static int REQUEST_CODE_ALBUM = 0x00911;
-    public static int REQUEST_CODE_CAMERA = 0x00912;
+    private static int REQUEST_CODE_ALBUM = 0x00911;
+    private static int REQUEST_CODE_CAMERA = 0x00912;
     private final String TAG = GetPicture.class.getSimpleName();
 
     private GetPictureFragment mFragment;
