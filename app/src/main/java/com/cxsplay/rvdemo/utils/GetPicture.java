@@ -35,11 +35,11 @@ public class GetPicture {
     private GetPictureFragment mFragment;
 
     public GetPicture(FragmentActivity activity) {
-        mFragment = getMakePhotoFragment(activity.getSupportFragmentManager());
+        mFragment = getGetPictureFragment(activity.getSupportFragmentManager());
     }
 
     public GetPicture(Fragment fragment) {
-        mFragment = getMakePhotoFragment(fragment.getChildFragmentManager());
+        mFragment = getGetPictureFragment(fragment.getChildFragmentManager());
     }
 
     public void openAlbum(GetPictureCallback callback) {
@@ -50,8 +50,8 @@ public class GetPicture {
         mFragment.openCamera(callback);
     }
 
-    private GetPictureFragment getMakePhotoFragment(FragmentManager fragmentManager) {
-        GetPictureFragment fragment = findMakePhotoFragment(fragmentManager);
+    private GetPictureFragment getGetPictureFragment(FragmentManager fragmentManager) {
+        GetPictureFragment fragment = findGetPictureFragment(fragmentManager);
         if (fragment == null) {
             fragment = new GetPictureFragment();
             fragmentManager.beginTransaction()
@@ -61,7 +61,7 @@ public class GetPicture {
         return fragment;
     }
 
-    private GetPictureFragment findMakePhotoFragment(FragmentManager fragmentManager) {
+    private GetPictureFragment findGetPictureFragment(FragmentManager fragmentManager) {
         return (GetPictureFragment) fragmentManager.findFragmentByTag(TAG);
     }
 
