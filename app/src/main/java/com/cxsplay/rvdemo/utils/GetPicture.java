@@ -1,5 +1,6 @@
 package com.cxsplay.rvdemo.utils;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -10,7 +11,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -24,34 +27,36 @@ import java.util.Locale;
 /**
  * Created by CxS on 2019/2/21
  */
-
 public class GetPicture {
-    public static int RESULT_CODE_OK = 0x00913;
-    public static int RESULT_CODE_FAILED = 0x00914;
-    private static int REQUEST_CODE_ALBUM = 0x00911;
-    private static int REQUEST_CODE_CAMERA = 0x00912;
+    public static int OK = 0x00913;
+    public static int FAILED = 0x00914;
+    public static int DENIED = 0x00915;
+    public static int REQUEST_CODE_ALBUM = 0x00911;
+    public static int REQUEST_CODE_CAMERA = 0x00912;
+    public static int TYPE_CAMERA = 0x00913;
+    public static int TYPE_ALBUM = 0x00914;
     private final String TAG = GetPicture.class.getSimpleName();
 
     private GetPictureFragment mFragment;
 
     public GetPicture(FragmentActivity activity) {
-        mFragment = getGetPictureFragment(activity.getSupportFragmentManager());
+        mFragment = getMakePhotoFragment(activity.getSupportFragmentManager());
     }
 
     public GetPicture(Fragment fragment) {
-        mFragment = getGetPictureFragment(fragment.getChildFragmentManager());
+        mFragment = getMakePhotoFragment(fragment.getChildFragmentManager());
     }
 
     public void openAlbum(GetPictureCallback callback) {
-        mFragment.openAlbum(callback);
+        mFragment.requestStoragePermission(callback);
     }
 
     public void openCamera(GetPictureCallback callback) {
-        mFragment.openCamera(callback);
+        mFragment.requestCameraPermission(callback);
     }
 
-    private GetPictureFragment getGetPictureFragment(FragmentManager fragmentManager) {
-        GetPictureFragment fragment = findGetPictureFragment(fragmentManager);
+    private GetPictureFragment getMakePhotoFragment(FragmentManager fragmentManager) {
+        GetPictureFragment fragment = findMakePhotoFragment(fragmentManager);
         if (fragment == null) {
             fragment = new GetPictureFragment();
             fragmentManager.beginTransaction()
@@ -61,15 +66,18 @@ public class GetPicture {
         return fragment;
     }
 
-    private GetPictureFragment findGetPictureFragment(FragmentManager fragmentManager) {
+    private GetPictureFragment findMakePhotoFragment(FragmentManager fragmentManager) {
         return (GetPictureFragment) fragmentManager.findFragmentByTag(TAG);
     }
 
     public static class GetPictureFragment extends Fragment {
 
+        private final static int PER_REQUEST_CODE_CAMERA = 0x0067;
+        private final static int PER_REQUEST_CODE_STORE = 0x0068;
         private GetPictureCallback callback;
         private FragmentActivity activity;
         private String filePath;
+        private int type;
 
         @Override
         public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -78,8 +86,54 @@ public class GetPicture {
             activity = getActivity();
         }
 
-        public void openAlbum(GetPictureCallback callback) {
+        private boolean isAllowed(String permission) {
+            int i = ActivityCompat.checkSelfPermission(activity, permission);
+            return i == PackageManager.PERMISSION_GRANTED;
+        }
+
+        private void requestStoragePermission(GetPictureCallback callback) {
+            type = TYPE_ALBUM;
             this.callback = callback;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                    && !isAllowed(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        PER_REQUEST_CODE_STORE);
+                return;
+            }
+            openAlbum();
+        }
+
+        private void requestCameraPermission(GetPictureCallback callback) {
+            type = TYPE_CAMERA;
+            this.callback = callback;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                    && (!isAllowed(Manifest.permission.CAMERA)
+                    || !isAllowed(Manifest.permission.WRITE_EXTERNAL_STORAGE))) {
+                requestPermissions(
+                        new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        PER_REQUEST_CODE_CAMERA);
+                return;
+            }
+            openCamera();
+        }
+
+        @Override
+        public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+            for (int grantResult : grantResults) {
+                if (grantResult != PackageManager.PERMISSION_GRANTED) {
+                    callback.callBack(type, DENIED, null);
+                    return;
+                }
+            }
+            if (requestCode == PER_REQUEST_CODE_STORE) {
+                openAlbum();
+            } else if (requestCode == PER_REQUEST_CODE_CAMERA) {
+                openCamera();
+            }
+        }
+
+        private void openAlbum() {
             Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             startActivityForResult(intent, REQUEST_CODE_ALBUM);
         }
@@ -95,7 +149,7 @@ public class GetPicture {
             }
         }
 
-        public File getFile() {
+        private File getFile() {
             if (!"mounted".equals(Environment.getExternalStorageState())) {
                 return null;
             }
@@ -104,11 +158,10 @@ public class GetPicture {
             return !file.exists() && !file.mkdirs() ? null : file;
         }
 
-        public void openCamera(GetPictureCallback callback) {
-            this.callback = callback;
+        private void openCamera() {
             File file = getFile();
             if (null == file) {
-                callback.callBack(RESULT_CODE_FAILED, null);
+                callback.callBack(type, FAILED, null);
             }
             File imgFile = new File(file, TimeUtils.getNowString(new SimpleDateFormat("yyyyMMddHHmm_ss", Locale.US)) + ".jpg");
             Uri imageUri;
@@ -127,7 +180,7 @@ public class GetPicture {
         @Override
         public void onActivityResult(int requestCode, int resultCode, Intent data) {
             if (Activity.RESULT_OK != resultCode) {
-                callback.callBack(RESULT_CODE_FAILED, null);
+                callback.callBack(type, FAILED, null);
                 return;
             }
             if (requestCode == REQUEST_CODE_ALBUM) {
@@ -138,17 +191,17 @@ public class GetPicture {
                     Cursor cursor = getActivity().getContentResolver().query(uri, null, null, null, null);
                     if (cursor != null && cursor.moveToFirst()) {
                         String filePath = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA));
-                        callback.callBack(RESULT_CODE_OK, filePath);
+                        callback.callBack(type, OK, filePath);
                         cursor.close();
                     }
                 }
             } else if (requestCode == REQUEST_CODE_CAMERA) {
-                callback.callBack(RESULT_CODE_OK, filePath);
+                callback.callBack(type, OK, filePath);
             }
         }
     }
 
     public interface GetPictureCallback {
-        void callBack(int result, String filePath);
+        void callBack(int type, int result, String filePath);
     }
 }

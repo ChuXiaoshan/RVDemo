@@ -23,18 +23,22 @@ public class PhotoActivity extends AppCompatActivity {
     private void init() {
         bind.btnOpenAlbum.setOnClickListener(v ->
                 new GetPicture(PhotoActivity.this)
-                        .openAlbum((result, filePath) -> {
-                            if (result == GetPicture.RESULT_CODE_OK) {
+                        .openAlbum((type, result, filePath) -> {
+                            if (result == GetPicture.OK) {
                                 ImageLoader.loadImageByUrl(bind.iv, filePath);
+                            } else if (result == GetPicture.DENIED) {
+                                ToastUtils.showShort("授权被拒绝");
                             } else {
                                 ToastUtils.showShort("获取图片失败");
                             }
                         }));
         bind.btnOpenCamera.setOnClickListener(v ->
                 new GetPicture(PhotoActivity.this)
-                        .openCamera((result, filePath) -> {
-                            if (result == GetPicture.RESULT_CODE_OK) {
+                        .openCamera((type, result, filePath) -> {
+                            if (result == GetPicture.OK) {
                                 ImageLoader.loadImageByUrl(bind.iv, filePath);
+                            } else if (result == GetPicture.DENIED) {
+                                ToastUtils.showShort("授权被拒绝");
                             } else {
                                 ToastUtils.showShort("获取图片失败");
                             }
