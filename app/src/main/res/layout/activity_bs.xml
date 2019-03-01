@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <TextView
+                android:id="@+id/tv"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="0dp"
+                android:text="dhdihfidoshfoidsjf"
+                android:background="#909090"
+                android:layout_height="56dp"/>
+
+
+        <android.support.design.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:background="#efefef">
+
+            <!--<include-->
+                    <!--android:id="@+id/bottom"-->
+                    <!--layout="@layout/bottom_sheet"/>-->
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="102dp"
+                      android:text="上拉试试"
+                      android:paddingTop="16dp"
+                      android:gravity="center_horizontal"
+                      android:background="@color/white"
+                      app:layout_anchorGravity="bottom|center"
+                      app:layout_anchor="@+id/bottom"/>
+
+            <LinearLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorPrimary"
+                    app:behavior_hideable="true"
+                    app:behavior_peekHeight="160dp"
+                    app:layout_behavior="@string/bottom_sheet_behavior"
+                    android:orientation="vertical">
+
+                <!--<TextView-->
+                <!--android:id="@+id/ll1"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="56dp"-->
+                <!--android:background="@color/white"-->
+                <!--android:text="上拉试试"-->
+                <!--android:gravity="center"/>-->
+            </LinearLayout>
+
+
+        </android.support.design.widget.CoordinatorLayout>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

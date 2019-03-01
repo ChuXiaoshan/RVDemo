@@ -16,6 +16,9 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        <activity android:name=".bottomsheet.BSActivity">
+        </activity>
+
         <provider
                 android:name="android.support.v4.content.FileProvider"
                 android:authorities="com.cxsplay.rvdemo.provider"

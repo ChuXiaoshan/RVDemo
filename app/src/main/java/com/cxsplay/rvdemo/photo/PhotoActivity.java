@@ -3,6 +3,7 @@ package com.cxsplay.rvdemo.photo;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.cxsplay.rvdemo.R;
 import com.cxsplay.rvdemo.common.ImageLoader;
@@ -43,5 +44,7 @@ public class PhotoActivity extends AppCompatActivity {
                                 ToastUtils.showShort("获取图片失败");
                             }
                         }));
+
+        bind.btnOpenCamera.post(() -> LogUtils.d("------"));
     }
 }

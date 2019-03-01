@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        app:behavior_hideable="true"
+        app:behavior_peekHeight="160dp"
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        android:orientation="vertical">
+
+    <!--<TextView-->
+    <!--android:id="@+id/ll1"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="56dp"-->
+    <!--android:background="@color/white"-->
+    <!--android:text="上拉试试"-->
+    <!--android:gravity="center"/>-->
+</LinearLayout>
