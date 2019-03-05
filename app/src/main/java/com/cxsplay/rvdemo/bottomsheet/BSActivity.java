@@ -1,97 +1,133 @@
 package com.cxsplay.rvdemo.bottomsheet;
 
-import android.databinding.DataBindingUtil;
+import android.content.Context;
+import android.graphics.Point;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomSheetBehavior;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.DisplayMetrics;
+import android.view.*;
+import android.widget.TextView;
+import com.blankj.utilcode.util.BarUtils;
+import com.blankj.utilcode.util.ConvertUtils;
+import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.ScreenUtils;
 import com.cxsplay.rvdemo.R;
-import com.cxsplay.rvdemo.databinding.ActivityBsBinding;
+import com.yinglan.scrolllayout.ScrollLayout;
 
 public class BSActivity extends AppCompatActivity {
 
-    private ActivityBsBinding bind;
-    private BottomSheetBehavior behavior;
+    private ScrollLayout mScrollLayout;
+    private TextView text_foot;
+
+    private ScrollLayout.OnScrollChangedListener mOnScrollChangedListener = new ScrollLayout.OnScrollChangedListener() {
+        @Override
+        public void onScrollProgressChanged(float currentProgress) {
+            if (currentProgress >= 0) {
+                float precent = 255 * currentProgress;
+                if (precent > 255) {
+                    precent = 255;
+                } else if (precent < 0) {
+                    precent = 0;
+                }
+//                mScrollLayout.getBackground().setAlpha(255 - (int) precent);
+            }
+//            if (text_foot.getVisibility() == View.VISIBLE)
+//                text_foot.setVisibility(View.GONE);
+        }
+
+        @Override
+        public void onScrollFinished(ScrollLayout.Status currentStatus) {
+            if (currentStatus.equals(ScrollLayout.Status.EXIT)) {
+                text_foot.setVisibility(View.VISIBLE);
+            }
+        }
+
+        @Override
+        public void onChildScroll(int top) {
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bind = DataBindingUtil.setContentView(this, R.layout.activity_bs);
-        init();
+        setContentView(R.layout.activity_bs);
+        initView();
     }
 
-    private void init() {
-        behavior = BottomSheetBehavior.from(bind.bottom);
-        behavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
-            @Override
-            public void onStateChanged(@NonNull View bottomSheet, @BottomSheetBehavior.State int newState) {
-                String state = "null";
-                switch (newState) {
-                    case 1:
-                        state = "STATE_DRAGGING";//过渡状态此时用户正在向上或者向下拖动bottom sheet
-                        break;
-                    case 2:
-                        state = "STATE_SETTLING"; // 视图从脱离手指自由滑动到最终停下的这一小段时间
-                        break;
-                    case 3:
-                        state = "STATE_EXPANDED"; //处于完全展开的状态
-
-                        break;
-                    case 4:
-                        state = "STATE_COLLAPSED"; //默认的折叠状态
-                        break;
-                    case 5:
-                        state = "STATE_HIDDEN"; //下滑动完全隐藏 bottom sheet
-                        break;
-                }
-
+    public boolean isNavigationBarShow() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            Display display = getWindowManager().getDefaultDisplay();
+            Point size = new Point();
+            Point realSize = new Point();
+            display.getSize(size);
+            display.getRealSize(realSize);
+            return realSize.y != size.y;
+        } else {
+            boolean menu = ViewConfiguration.get(this).hasPermanentMenuKey();
+            boolean back = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_BACK);
+            if (menu || back) {
+                return false;
+            } else {
+                return true;
             }
+        }
+    }
 
+
+    private int ddd() {
+        Context context = getApplicationContext();
+        DisplayMetrics localDisplayMetrics = context.getResources().getDisplayMetrics();
+        return localDisplayMetrics.heightPixels;
+    }
+
+
+    private void initView() {
+
+
+        LogUtils.d("---isSupportNavBar--->" + BarUtils.isSupportNavBar());
+        LogUtils.d("---isNavBarVisible--->" + BarUtils.isNavBarVisible(this));
+        LogUtils.d("---getActionBarHeight--->" + BarUtils.getActionBarHeight());
+        LogUtils.d("---getStatusBarHeight--->" + BarUtils.getStatusBarHeight());
+        LogUtils.d("---getNavBarHeight--->" + BarUtils.getNavBarHeight());
+        LogUtils.d("---getScreenHeight--->" + ScreenUtils.getScreenHeight());
+        LogUtils.d("---getDisplayHeight--->" + ddd());
+
+
+//        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.root);
+        mScrollLayout = (ScrollLayout) findViewById(R.id.scroll_down_layout);
+        text_foot = (TextView) findViewById(R.id.text_foot);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.list_view);
+//        recyclerView.setAdapter(new RecyclerViewAdapter(this));
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL));
+
+        /**设置 setting*/
+        mScrollLayout.setMinOffset(0);
+        mScrollLayout.setMaxOffset((int) (ScreenUtils.getScreenHeight() * 0.5));
+//        mScrollLayout.setExitOffset(BarUtils.getNavBarHeight() + ConvertUtils.dp2px(50));
+        mScrollLayout.setExitOffset(BarUtils.getNavBarHeight() + ConvertUtils.dp2px(115));
+//        BarUtils.setNavBarVisibility(this, false);
+//        ToastUtils.showShort("---isSupportNavBar--->" + isNavigationBarShow());
+
+        mScrollLayout.setIsSupportExit(true);
+        mScrollLayout.isSupportExit();
+        mScrollLayout.setAllowHorizontalScroll(true);
+//        mScrollLayout.setOnScrollChangedListener(mOnScrollChangedListener);
+        mScrollLayout.setToExit();
+
+        text_foot.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
-//                Log.d("BottomSheetDemo", "slideOffset:" + slideOffset);
+            public void onClick(View v) {
+                mScrollLayout.setToOpen();
             }
         });
-
-
-//        /**
-//         * bottom sheet state change listener
-//         * we are changing button text when sheet changed state
-//         * */
-//        sheetBehavior.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
-//            @Override
-//            public void onStateChanged(@NonNull View bottomSheet, int newState) {
-//                switch (newState) {
-//                    case BottomSheetBehavior.STATE_HIDDEN:
-//                        ToastUtils.showShort("STATE_HIDDEN");
-//                        break;
-//                    case BottomSheetBehavior.STATE_EXPANDED:
-//                        ToastUtils.showShort("STATE_EXPANDED");
-//                        break;
-//                    case BottomSheetBehavior.STATE_COLLAPSED:
-//                        ToastUtils.showShort("STATE_COLLAPSED");
-//                        break;
-//                    case BottomSheetBehavior.STATE_DRAGGING:
-//                        ToastUtils.showShort("STATE_DRAGGING");
-//
-//                        break;
-//                    case BottomSheetBehavior.STATE_SETTLING:
-//                        ToastUtils.showShort("STATE_SETTLING");
-//                        break;
-//                    case BottomSheetBehavior.STATE_HALF_EXPANDED:
-//                        ToastUtils.showShort("STATE_HALF_EXPANDED");
-//                        break;
-//                    case BottomSheetBehavior.PEEK_HEIGHT_AUTO:
-//                        ToastUtils.showShort("PEEK_HEIGHT_AUTO");
-//                        break;
-//                }
-//            }
-//
-//            @Override
-//            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
-//
-//            }
-//        });
+        findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mScrollLayout.setToOpen();
+            }
+        });
     }
 }
