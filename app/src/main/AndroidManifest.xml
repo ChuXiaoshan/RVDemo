@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="com.cxsplay.rvdemo">
+<manifest
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        package="com.cxsplay.rvdemo">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -16,12 +17,14 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        <activity android:name=".matisse.MatisseDemoActivity">
+        </activity>
         <activity android:name=".bottomsheet.BSActivity">
         </activity>
 
         <provider
                 android:name="android.support.v4.content.FileProvider"
-                android:authorities="com.cxsplay.rvdemo.provider"
+                android:authorities="${APPLICATION_ID}.provider"
                 android:exported="false"
                 android:grantUriPermissions="true">
             <meta-data

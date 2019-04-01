@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".qqui.QQUIActivity">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".qqui.QQUIActivity">
 
     <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="10dp">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp">
 
         <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:gravity="center"
-            android:text="指"
-            app:qmui_backgroundColor="@color/colorPrimary"
-            app:qmui_borderWidth="0dp"
-            app:qmui_radiusTopLeft="8dp" />
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:gravity="center"
+                android:text="指"
+                app:qmui_backgroundColor="@color/colorPrimary"
+                app:qmui_borderWidth="0dp"
+                app:qmui_radiusTopLeft="8dp"/>
 
     </android.support.constraint.ConstraintLayout>
 </layout>
