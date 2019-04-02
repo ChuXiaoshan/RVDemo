@@ -49,6 +49,11 @@
                 android:name=".qqui.QQUIActivity"
                 android:theme="@style/QMUITheme"/>
         <activity android:name=".brvah.BRVAHActivity"/>
+
+        <activity
+                android:name="com.yalantis.ucrop.UCropActivity"
+                android:screenOrientation="portrait"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
     </application>
 
 </manifest>
