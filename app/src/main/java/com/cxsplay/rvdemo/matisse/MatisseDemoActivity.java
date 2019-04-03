@@ -8,21 +8,26 @@ import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ScreenUtils;
+import com.blankj.utilcode.util.TimeUtils;
 import com.cxsplay.rvdemo.BuildConfig;
 import com.cxsplay.rvdemo.R;
 import com.cxsplay.rvdemo.common.ImageLoader;
 import com.cxsplay.rvdemo.databinding.ActivityMatisseDemoBinding;
 import com.yalantis.ucrop.UCrop;
+import com.yalantis.ucrop.UCropActivity;
 import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.internal.entity.CaptureStrategy;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 public class MatisseDemoActivity extends AppCompatActivity {
 
@@ -43,6 +48,7 @@ public class MatisseDemoActivity extends AppCompatActivity {
         Matisse.from(MatisseDemoActivity.this)
                 .choose(MimeType.of(MimeType.JPEG), false)
                 .countable(false)
+
 //                .maxSelectable(9)
                 .capture(true)
                 .captureStrategy(new CaptureStrategy(true, BuildConfig.APPLICATION_ID + ".provider", "Pictures"))//存储到哪里
@@ -83,8 +89,7 @@ public class MatisseDemoActivity extends AppCompatActivity {
             Log.d("Matisse", "Paths: " + Matisse.obtainPathResult(data));
             Log.e("Matisse", "Use the selected photos with original: " + String.valueOf(Matisse.obtainOriginalState(data)));
 
-
-            File imgFile = new File(getFile(), "hhhh.jpg");
+            File imgFile = new File(getFile(), TimeUtils.getNowString(new SimpleDateFormat("yyyyMMddHHmm_ss", Locale.US)) + ".jpg");
             try {
                 boolean dd = imgFile.createNewFile();
                 LogUtils.d("---create--->" + dd);
@@ -100,9 +105,19 @@ public class MatisseDemoActivity extends AppCompatActivity {
 //            }
 
             LogUtils.d("----->" + destinationUri.getPath());
+
+            UCrop.Options options = new UCrop.Options();
+            options.setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
+            options.setToolbarColor(ContextCompat.getColor(this, R.color.colorPrimary));
+            options.setActiveWidgetColor(ContextCompat.getColor(this, R.color.colorPrimary));
+            options.setAllowedGestures(UCropActivity.SCALE, UCropActivity.ROTATE, UCropActivity.ALL);
+//            options.setcolor
+
+
             UCrop.of(Matisse.obtainResult(data).get(0), destinationUri)
                     .withAspectRatio(1, 1)
-                    .withMaxResultSize(200, 200)
+                    .withOptions(options)
+//                    .withMaxResultSize(200, 200)
                     .start(this);
         }
 
