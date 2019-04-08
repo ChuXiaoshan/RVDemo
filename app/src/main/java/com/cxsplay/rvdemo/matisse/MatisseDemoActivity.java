@@ -47,9 +47,8 @@ public class MatisseDemoActivity extends AppCompatActivity {
     private void open() {
         Matisse.from(MatisseDemoActivity.this)
                 .choose(MimeType.of(MimeType.JPEG), false)
-                .countable(false)
-
-//                .maxSelectable(9)
+                .countable(true)
+                .maxSelectable(9)
                 .capture(true)
                 .captureStrategy(new CaptureStrategy(true, BuildConfig.APPLICATION_ID + ".provider", "Pictures"))//存储到哪里
                 .gridExpectedSize(ScreenUtils.getScreenWidth() / 3)
@@ -80,6 +79,28 @@ public class MatisseDemoActivity extends AppCompatActivity {
         return !file.exists() && !file.mkdirs() ? null : file;
     }
 
+    private void cropPic(Uri sourceUri) {
+        File imgFile = new File(getFile(), TimeUtils.getNowString(new SimpleDateFormat("yyyyMMddHHmm_ss", Locale.US)) + ".jpg");
+        try {
+            boolean dd = imgFile.createNewFile();
+            LogUtils.d("---create--->" + dd);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Uri destinationUri;
+        destinationUri = Uri.fromFile(imgFile);
+        UCrop.Options options = new UCrop.Options();
+        options.setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
+        options.setToolbarColor(ContextCompat.getColor(this, R.color.colorPrimary));
+        options.setActiveWidgetColor(ContextCompat.getColor(this, R.color.colorPrimary));
+        options.setAllowedGestures(UCropActivity.SCALE, UCropActivity.ROTATE, UCropActivity.ALL);
+        UCrop.of(sourceUri, destinationUri)
+                .withAspectRatio(1, 1)
+                .withOptions(options)
+//                    .withMaxResultSize(200, 200)
+                .start(this);
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -88,37 +109,7 @@ public class MatisseDemoActivity extends AppCompatActivity {
             Log.d("Matisse", "Uris: " + Matisse.obtainResult(data));
             Log.d("Matisse", "Paths: " + Matisse.obtainPathResult(data));
             Log.e("Matisse", "Use the selected photos with original: " + String.valueOf(Matisse.obtainOriginalState(data)));
-
-            File imgFile = new File(getFile(), TimeUtils.getNowString(new SimpleDateFormat("yyyyMMddHHmm_ss", Locale.US)) + ".jpg");
-            try {
-                boolean dd = imgFile.createNewFile();
-                LogUtils.d("---create--->" + dd);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Uri destinationUri;
-//            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-            destinationUri = Uri.fromFile(imgFile);
-//            } else {
-//                String authority = getApplicationContext().getPackageName() + ".provider";
-//                destinationUri = FileProvider.getUriForFile(this, authority, imgFile);
-//            }
-
-            LogUtils.d("----->" + destinationUri.getPath());
-
-            UCrop.Options options = new UCrop.Options();
-            options.setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
-            options.setToolbarColor(ContextCompat.getColor(this, R.color.colorPrimary));
-            options.setActiveWidgetColor(ContextCompat.getColor(this, R.color.colorPrimary));
-            options.setAllowedGestures(UCropActivity.SCALE, UCropActivity.ROTATE, UCropActivity.ALL);
-//            options.setcolor
-
-
-            UCrop.of(Matisse.obtainResult(data).get(0), destinationUri)
-                    .withAspectRatio(1, 1)
-                    .withOptions(options)
-//                    .withMaxResultSize(200, 200)
-                    .start(this);
+            cropPic(Matisse.obtainResult(data).get(0));
         }
 
         LogUtils.d("1");
