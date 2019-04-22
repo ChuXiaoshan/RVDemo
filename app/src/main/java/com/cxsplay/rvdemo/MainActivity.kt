@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.cxsplay.rvdemo.bottomsheet.BSActivity
 import com.cxsplay.rvdemo.brvah.BRVAHActivity
+import com.cxsplay.rvdemo.decoration.List1Activity
 import com.cxsplay.rvdemo.matisse.MatisseDemoActivity
 import com.cxsplay.rvdemo.mmkv.MMKVActivity
 import com.cxsplay.rvdemo.photo.PhotoActivity
@@ -58,6 +59,9 @@ class MainActivity : AppCompatActivity() {
         }
         btn10.setOnClickListener {
             startActivity(Intent(this, MatisseDemoActivity::class.java))
+        }
+        btn11.setOnClickListener {
+            startActivity(Intent(this, List1Activity::class.java))
         }
     }
 }
