@@ -8,6 +8,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import com.blankj.utilcode.util.ConvertUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.cxsplay.rvdemo.R;
 import com.cxsplay.rvdemo.bean.Simple;
@@ -35,19 +36,19 @@ public class List1Activity extends AppCompatActivity {
         mList.add(new Simple());
         mList.add(new Simple());
         mList.add(new Simple());
-        mList.add(new Simple());
-        mList.add(new Simple());
-        mList.add(new Simple());
-        mList.add(new Simple());
-        mList.add(new Simple());
-        mList.add(new Simple());
-        mList.add(new Simple());
-        mList.add(new Simple());
-        mList.add(new Simple());
-        mList.add(new Simple());
-        mList.add(new Simple());
-        mList.add(new Simple());
-        mList.add(new Simple());
+//        mList.add(new Simple());
+//        mList.add(new Simple());
+//        mList.add(new Simple());
+//        mList.add(new Simple());
+//        mList.add(new Simple());
+//        mList.add(new Simple());
+//        mList.add(new Simple());
+//        mList.add(new Simple());
+//        mList.add(new Simple());
+//        mList.add(new Simple());
+//        mList.add(new Simple());
+//        mList.add(new Simple());
+//        mList.add(new Simple());
     }
 
     private BaseQuickAdapter.SpanSizeLookup spanSizeLookup = (gridLayoutManager, position) -> {
@@ -62,7 +63,7 @@ public class List1Activity extends AppCompatActivity {
         adapter.setSpanSizeLookup(spanSizeLookup);
         bind.rv.setLayoutManager(new GridLayoutManager(this, 3));
         bind.rv.setAdapter(adapter);
-        bind.rv.addItemDecoration(new CustomDecoration(this, R.drawable.recyclerview_item_divider));
+        bind.rv.addItemDecoration(new CustomDecoration(ConvertUtils.dp2px(10)));
 //        bind.rv.addItemDecoration(new SimpleDividerDecoration(10, Color.BLUE));
         adapter.notifyDataSetChanged();
     }
