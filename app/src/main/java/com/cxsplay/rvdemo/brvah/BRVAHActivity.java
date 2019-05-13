@@ -1,9 +1,9 @@
 package com.cxsplay.rvdemo.brvah;
 
-import android.databinding.DataBindingUtil;
+import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import com.cxsplay.rvdemo.R;
 import com.cxsplay.rvdemo.databinding.ActivityBrvahBinding;
 

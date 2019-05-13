@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         tools:context=".qqui.QQUIActivity">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="10dp">
@@ -18,5 +18,5 @@
                 app:qmui_borderWidth="0dp"
                 app:qmui_radiusTopLeft="8dp"/>
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

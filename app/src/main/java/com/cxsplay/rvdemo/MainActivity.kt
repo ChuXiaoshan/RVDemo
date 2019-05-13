@@ -3,7 +3,7 @@ package com.cxsplay.rvdemo
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.cxsplay.rvdemo.bottomsheet.BSActivity
 import com.cxsplay.rvdemo.brvah.BRVAHActivity
 import com.cxsplay.rvdemo.decoration.List1Activity
