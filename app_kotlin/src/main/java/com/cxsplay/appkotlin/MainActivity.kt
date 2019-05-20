@@ -28,4 +28,13 @@ class MainActivity : AppCompatActivity() {
             ToastUtils.showShort(bean.toString())
         }
     }
+
+    private fun getNameById(id: Int): String {
+        when (id) {
+            1 -> return "张三"
+            2 -> return "李四"
+            3 -> return "王五"
+        }
+        return ""
+    }
 }
