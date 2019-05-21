@@ -1,10 +1,7 @@
 package com.cxsplay.appkotlin.netk
 
-
-import com.cxsplay.appkotlin.net.ApiService
-
 /**
- * Created by CxS on 2018/4/12
+ * Created by CxS on 2019/5/21
  */
 object RHelper {
 
@@ -12,7 +9,7 @@ object RHelper {
         private set
 
     init {
-        val retrofit = RUtil.getRetrofitBuilder("").build()
+        val retrofit = RUtil.getRetrofitBuilder("http://192.168.1.112:8080").build()
         apiService = retrofit.create(ApiService::class.java)
     }
 }
