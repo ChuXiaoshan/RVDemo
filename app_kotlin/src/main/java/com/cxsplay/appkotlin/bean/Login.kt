@@ -23,7 +23,6 @@ class Login : BaseObservable() {
             notifyPropertyChanged(BR.pwd)
         }
 
-
     override fun toString(): String {
         return "Login(name=$name, pwd=$pwd)"
     }

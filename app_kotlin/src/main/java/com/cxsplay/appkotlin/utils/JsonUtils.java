@@ -1,0 +1,56 @@
+package com.cxsplay.appkotlin.utils;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonNull;
+
+import java.lang.reflect.Type;
+
+/**
+ * Created by Xiaoshan on 2016/3/18.
+ * gsonUtil
+ */
+
+public class JsonUtils {
+
+    private static Gson gson = new Gson();
+
+    private JsonUtils() {
+    }
+
+    /**
+     * 将对象转为JSON串，此方法能够满足大部分需求
+     *
+     * @param obj :将要被转化的对象
+     * @return :转化后的JSON串
+     */
+    public static String toJson(Object obj) {
+        if (obj == null) {
+            return gson.toJson(JsonNull.INSTANCE);
+        }
+        return gson.toJson(obj);
+    }
+
+    /**
+     * 用来将JSON串转为对象，但此方法不可用来转带泛型的集合
+     *
+     * @param json     json
+     * @param classOfT classOfT
+     * @return T
+     */
+    public static <T> Object fromJson(String json, Class<T> classOfT) {
+        return gson.fromJson(json, (Type) classOfT);
+    }
+
+    /**
+     * 用来将JSON串转为对象，此方法可用来转带泛型的集合，
+     * 如：Type为new TypeToken<List<T>>(){}.getType()，
+     * 其它类也可以用此方法调用，就是将List<T>替换为你想要转成的类
+     *
+     * @param json    json
+     * @param typeOfT typeOfT
+     * @return Object
+     */
+    public static Object fromJson(String json, Type typeOfT) {
+        return gson.fromJson(json, typeOfT);
+    }
+}
