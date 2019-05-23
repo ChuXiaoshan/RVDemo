@@ -11,7 +11,7 @@ import com.cxsplay.appkotlin.ui.ProductsActivity
 
 class MainActivity : AppCompatActivity() {
 
-    private var bind: ActivityMainBinding? = null
+    private lateinit var bind: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,10 +20,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun init() {
-        bind!!.btnAddProduct.setOnClickListener {
+        bind.btnAddProduct.setOnClickListener {
             startActivity(Intent(this, AddProductActivity::class.java))
         }
-        bind!!.btnShowProduct.setOnClickListener {
+        bind.btnShowProduct.setOnClickListener {
             startActivity(Intent(this, ProductsActivity::class.java))
         }
     }

@@ -3,6 +3,7 @@ package com.cxsplay.appkotlin.netk
 
 import com.cxsplay.appkotlin.bean.Product
 import com.cxsplay.appkotlin.entity.Base
+import com.cxsplay.appkotlin.entity.BaseList
 import com.cxsplay.appkotlin.entity.User
 import io.reactivex.Observable
 import retrofit2.http.Body
@@ -19,4 +20,7 @@ interface ApiService {
 
     @POST("/product/add_product")
     fun addProduct(@Body product: Product?): Observable<Base<Any>>
+
+    @GET("/product/get_list")
+    fun getProducts(): Observable<Base<BaseList<Product>>>
 }
