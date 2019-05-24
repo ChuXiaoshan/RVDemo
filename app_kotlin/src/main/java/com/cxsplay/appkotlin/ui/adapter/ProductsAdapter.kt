@@ -1,43 +1,27 @@
 package com.cxsplay.appkotlin.ui.adapter
 
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.RecyclerView
+import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.BaseViewHolder
 import com.cxsplay.appkotlin.R
 import com.cxsplay.appkotlin.bean.Product
 import com.cxsplay.appkotlin.common.ImageLoader
-import com.cxsplay.appkotlin.databinding.ItemProductsBinding
+import java.util.*
 
 /**
- * Created by CxS on 2019/5/23 9:58.
+ * Created by CxS on 2019/5/23 17:38.
  * Description:
  */
-class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
+class ProductssAdapter(layoutResId: Int, data: List<Product>?) :
+        BaseQuickAdapter<Product, BaseViewHolder>(layoutResId, data) {
 
-    private var data: List<Product>? = null
+    private val list: MutableList<Product>
 
-    fun setData(data: List<Product>?) {
-        this.data = data
+    init {
+        list = ArrayList()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_products, parent, false))
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val data = this.data!![position]
-        holder.bind!!.tvTitle.text = data.subTitle
-        ImageLoader.byUrl(data.pic, holder.bind.ivProduct)
-    }
-
-    override fun getItemCount(): Int {
-        return if (data == null) 0 else data!!.size
-    }
-
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        val bind: ItemProductsBinding? = DataBindingUtil.bind(itemView)
+    override fun convert(helper: BaseViewHolder, item: Product) {
+        ImageLoader.byUrl(item.pic, helper.getView(R.id.iv_product))
+        helper.setText(R.id.tv_title, item.subTitle)
     }
 }
