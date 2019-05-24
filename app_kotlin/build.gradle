@@ -64,5 +64,5 @@ dependencies {
     kapt 'com.github.bumptech.glide:compiler:4.9.0'
 
     //BRVAH
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.45-androidx'
 }

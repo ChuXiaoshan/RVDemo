@@ -1,27 +1,41 @@
-package com.cxsplay.appkotlin.test
+package com.cxsplay.appkotlin.test;
 
 /**
  * Created by CxS on 2019/5/13 17:41.
  * Description:
  */
-class Login {
+public class Login {
 
-    var name: String? = null
-    var pwd: String? = null
-        set(pwd) {
+    private String name;
+    private String pwd;
+    private int dd;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public void setPwd(String pwd) {
 
 
-            dd = if (dd == 1) 1 else dd--
+        dd = dd == 1 ? 1 : dd--;
 
 
-            field = pwd
-        }
-    private var dd: Int = 0
+        this.pwd = pwd;
+    }
 
-    override fun toString(): String {
+    @Override
+    public String toString() {
         return "Login{" +
-                "name='" + name + '\''.toString() +
-                ", pwd='" + this.pwd + '\''.toString() +
-                '}'.toString()
+                "name='" + name + '\'' +
+                ", pwd='" + pwd + '\'' +
+                '}';
     }
 }

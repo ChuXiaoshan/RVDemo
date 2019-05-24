@@ -13,16 +13,21 @@ import java.util.concurrent.TimeUnit
  */
 internal object RUtil {
 
+
     private val okHttpClientBuilder: OkHttpClient.Builder
         get() {
             val logInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger { message -> Logger.d(message) }).setLevel(
                 HttpLoggingInterceptor.Level.BODY
             )
+            val basicInterceptor: BasicParamsInterceptor = BasicParamsInterceptor.Builder()
+                .addHeaderLine("Connection: Close")
+                .build()
             return UnsafeOkHttpClient.unsafeOkHttpClient.newBuilder()
+                .addInterceptor(basicInterceptor)
                 .addInterceptor(logInterceptor)
                 .connectTimeout(10, TimeUnit.SECONDS)
-                .readTimeout(10, TimeUnit.SECONDS)
                 .writeTimeout(10, TimeUnit.SECONDS)
+                .readTimeout(10, TimeUnit.SECONDS)
                 .retryOnConnectionFailure(false)
         }
 

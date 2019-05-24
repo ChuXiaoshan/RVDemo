@@ -14,7 +14,7 @@ class BaseList<T> {
 
     override fun toString(): String {
         return "PageInfo{" +
-                "page=" + page +
+                "pageBean=" + page +
                 ", size=" + size +
                 ", totalPage=" + totalPage +
                 ", totalSize=" + totalSize +

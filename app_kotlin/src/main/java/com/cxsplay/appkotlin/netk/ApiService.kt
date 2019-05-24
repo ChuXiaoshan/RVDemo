@@ -9,6 +9,7 @@ import io.reactivex.Observable
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 /**
  * Created by CxS on 2019/5/21
@@ -22,5 +23,5 @@ interface ApiService {
     fun addProduct(@Body product: Product?): Observable<Base<Any>>
 
     @GET("/product/get_list")
-    fun getProducts(): Observable<Base<BaseList<Product>>>
+    fun getProducts(@Query("page") page: Int, @Query("size") size: Int): Observable<Base<BaseList<Product>>>
 }

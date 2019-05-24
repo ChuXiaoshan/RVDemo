@@ -11,7 +11,7 @@ import java.util.*
  * Created by CxS on 2019/5/23 17:38.
  * Description:
  */
-class ProductssAdapter(layoutResId: Int, data: List<Product>?) :
+class ProductsAdapter(layoutResId: Int, data: List<Product>?) :
         BaseQuickAdapter<Product, BaseViewHolder>(layoutResId, data) {
 
     private val list: MutableList<Product>
