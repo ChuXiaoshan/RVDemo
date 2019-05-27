@@ -11,6 +11,7 @@ import com.cxsplay.rvdemo.matisse.MatisseDemoActivity
 import com.cxsplay.rvdemo.mmkv.MMKVActivity
 import com.cxsplay.rvdemo.photo.PhotoActivity
 import com.cxsplay.rvdemo.qqui.QQUIActivity
+import com.cxsplay.rvdemo.ui.ShadowActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -62,6 +63,9 @@ class MainActivity : AppCompatActivity() {
         }
         btn11.setOnClickListener {
             startActivity(Intent(this, List1Activity::class.java))
+        }
+        btn12.setOnClickListener {
+            startActivity(Intent(this, ShadowActivity::class.java))
         }
     }
 }

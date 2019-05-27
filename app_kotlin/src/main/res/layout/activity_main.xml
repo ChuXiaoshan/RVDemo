@@ -24,5 +24,13 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_add_product" />
 
+        <Button
+            android:id="@+id/btn_show_anko"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="anko"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_show_product" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

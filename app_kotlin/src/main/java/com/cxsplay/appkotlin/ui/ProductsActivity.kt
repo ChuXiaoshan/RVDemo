@@ -34,6 +34,7 @@ class ProductsActivity : BaseListActivity() {
     }
 
     private fun init() {
+
         data = ArrayList()
         adapter = ProductsAdapter(com.cxsplay.appkotlin.R.layout.item_products, data)
         adapter.setOnLoadMoreListener(rlm, bind.rv)

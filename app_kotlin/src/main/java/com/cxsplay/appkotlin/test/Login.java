@@ -8,7 +8,6 @@ public class Login {
 
     private String name;
     private String pwd;
-    private int dd;
 
     public String getName() {
         return name;
@@ -23,11 +22,6 @@ public class Login {
     }
 
     public void setPwd(String pwd) {
-
-
-        dd = dd == 1 ? 1 : dd--;
-
-
         this.pwd = pwd;
     }
 

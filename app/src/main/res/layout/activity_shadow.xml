@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.ShadowActivity">
+
+    <com.cxsplay.appkotlin.widget.shadowlayout.ShadowLayout
+        android:id="@+id/sl_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:sl_shadowColor="#66D81B60"
+        app:sl_shadowRadius="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:text="hello world" />
+
+    </com.cxsplay.appkotlin.widget.shadowlayout.ShadowLayout>
+
+    <com.cxsplay.appkotlin.widget.shadowlayout.ShadowLayout
+        android:id="@+id/sl_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sl_1"
+        app:sl_dy="4dp"
+        app:sl_shadowColor="#44D81B60"
+        app:sl_shadowRadius="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:text="hello world" />
+
+    </com.cxsplay.appkotlin.widget.shadowlayout.ShadowLayout>
+
+    <com.cxsplay.appkotlin.widget.shadowlayout.ShadowLayout
+        android:id="@+id/sl_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sl_2"
+        app:sl_cornerRadius="@dimen/dp_4"
+        app:sl_dy="4dp"
+        app:sl_shadowColor="#44D81B60"
+        app:sl_shadowRadius="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:text="hello world" />
+
+    </com.cxsplay.appkotlin.widget.shadowlayout.ShadowLayout>
+
+    <com.cxsplay.appkotlin.widget.shadowlayout.ShadowLayout
+        android:id="@+id/sl_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sl_3"
+        app:sl_cornerRadius="@dimen/dp_4"
+        app:sl_dy="8dp"
+        app:sl_shadowColor="#44D81B60"
+        app:sl_shadowRadius="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:text="hello world" />
+
+    </com.cxsplay.appkotlin.widget.shadowlayout.ShadowLayout>
+
+    <com.cxsplay.appkotlin.widget.shadowlayout.ShadowLayout
+        android:id="@+id/sl_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sl_4"
+        app:sl_cornerRadius="4dp"
+        app:sl_dy="8dp"
+        app:sl_shadowColor="#44D81B60"
+        app:sl_shadowRadius="8dp"
+        app:sl_shadowSides="LEFT">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:text="hello world" />
+
+    </com.cxsplay.appkotlin.widget.shadowlayout.ShadowLayout>
+
+    <com.cxsplay.appkotlin.widget.shadowlayout.ShadowLayout
+        android:id="@+id/sl_6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sl_5"
+        app:sl_dy="-2dp"
+        app:sl_shadowColor="#22D81B60"
+        app:sl_shadowRadius="4dp"
+        app:sl_shadowSides="TOP">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:text="hello world" />
+
+    </com.cxsplay.appkotlin.widget.shadowlayout.ShadowLayout>
+
+    <com.cxsplay.appkotlin.widget.shadowlayout.ShadowLayout
+        android:id="@+id/sl_7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sl_6"
+        app:sl_borderColor="@color/grey300"
+        app:sl_borderWidth="1dp"
+        app:sl_cornerRadius="@dimen/dp_4"
+        app:sl_dy="4dp"
+        app:sl_shadowColor="#44D81B60"
+        app:sl_shadowRadius="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:text="hello world" />
+
+    </com.cxsplay.appkotlin.widget.shadowlayout.ShadowLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
