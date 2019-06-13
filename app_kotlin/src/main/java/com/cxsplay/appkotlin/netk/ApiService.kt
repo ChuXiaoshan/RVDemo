@@ -6,6 +6,7 @@ import com.cxsplay.appkotlin.entity.Base
 import com.cxsplay.appkotlin.entity.BaseList
 import com.cxsplay.appkotlin.entity.User
 import io.reactivex.Observable
+import okhttp3.RequestBody
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -24,4 +25,7 @@ interface ApiService {
 
     @GET("/product/get_list")
     fun getProducts(@Query("page") page: Int, @Query("size") size: Int): Observable<Base<BaseList<Product>>>
+
+    @POST("https://pay.dev.vyicoo.com/test/index2")
+    fun smilePayInit(@Body body: RequestBody): Observable<Base<Any>>
 }
