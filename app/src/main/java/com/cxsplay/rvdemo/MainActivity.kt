@@ -11,8 +11,10 @@ import com.cxsplay.rvdemo.matisse.MatisseDemoActivity
 import com.cxsplay.rvdemo.mmkv.MMKVActivity
 import com.cxsplay.rvdemo.photo.PhotoActivity
 import com.cxsplay.rvdemo.qqui.QQUIActivity
+import com.cxsplay.rvdemo.ui.EditTextActivity
 import com.cxsplay.rvdemo.ui.ShadowActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.startActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -67,5 +69,6 @@ class MainActivity : AppCompatActivity() {
         btn12.setOnClickListener {
             startActivity(Intent(this, ShadowActivity::class.java))
         }
+        btn13.setOnClickListener { startActivity<EditTextActivity>() }
     }
 }

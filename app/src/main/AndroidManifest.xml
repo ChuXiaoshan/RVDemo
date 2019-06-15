@@ -12,13 +12,15 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:name=".App"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".ui.ShadowActivity"></activity>
-        <activity android:name=".matisse.MatisseDemoActivity"></activity>
-        <activity android:name=".bottomsheet.BSActivity"></activity>
+        <activity android:name=".ui.EditTextActivity"/>
+        <activity android:name=".ui.ShadowActivity" />
+        <activity android:name=".matisse.MatisseDemoActivity" />
+        <activity android:name=".bottomsheet.BSActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -30,8 +32,8 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".photo.PhotoActivity"></activity>
-        <activity android:name=".mmkv.MMKVActivity"></activity>
+        <activity android:name=".photo.PhotoActivity" />
+        <activity android:name=".mmkv.MMKVActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

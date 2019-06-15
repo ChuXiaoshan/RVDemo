@@ -9,7 +9,7 @@ object RHelper {
         private set
 
     init {
-        val retrofit = RUtil.getRetrofitBuilder("http://192.168.1.112:8080").build()
+        val retrofit = RUtil.getRetrofitBuilder("http://192.168.1.104:8080").build()
         apiService = retrofit.create(ApiService::class.java)
     }
 }
