@@ -7,6 +7,7 @@ import com.cxsplay.appkotlin.common.base.BaseActivity
 import com.cxsplay.appkotlin.databinding.ActivityMainBinding
 import com.cxsplay.appkotlin.entity.Base
 import com.cxsplay.appkotlin.netk.RHelper
+import com.cxsplay.appkotlin.test.expand.click
 import com.cxsplay.appkotlin.ui.AddProductActivity
 import com.cxsplay.appkotlin.ui.ProductsActivity
 import com.orhanobut.logger.Logger
@@ -37,9 +38,20 @@ class MainActivity : BaseActivity() {
             startActivity<ProductsActivity>("id" to 4, "title" to "products")
         }
 
+//        bind.btnShowAnko.setOnClickListener {
+//            payInit()
+//        }
 
-        bind.btnShowAnko.setOnClickListener {
-            payInit()
+//        bind.btnShowAnko.clickWithInterval(10000) {
+//            System.out.println("11111")
+//        }
+//
+        bind.btnShowAnko.click {
+            System.out.println("11111")
+        }
+
+        bind.btn4.click(0) {
+            System.out.println("444444")
         }
     }
 

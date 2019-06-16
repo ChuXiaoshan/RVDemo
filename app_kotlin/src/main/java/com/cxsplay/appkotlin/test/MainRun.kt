@@ -1,19 +1,18 @@
 package com.cxsplay.appkotlin.test
 
-const val str = 2
-
-
 fun main() {
 
-    var hello: Hello? = null
-
-    hello = Hello()
-
-
+//    doTalk("hello", )
 }
 
-fun dd(hello: Hello): Hello? {
-    hello.name = "cxs"
 
-    return hello
+//fun talk(word: String): String {
+//    System.out.println(word)
+//    return word
+//}
+
+fun doTalk(word: String, talk: (word: String) -> String) {
+    var dd = talk(word)
+    System.out.println("hell$dd")
+
 }
