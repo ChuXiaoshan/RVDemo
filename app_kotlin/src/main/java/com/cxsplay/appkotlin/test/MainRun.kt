@@ -2,17 +2,16 @@ package com.cxsplay.appkotlin.test
 
 fun main() {
 
-//    doTalk("hello", )
+    val oddLength = compose(::isOdd, ::length)
+    val strings = listOf("a", "ab", "abc")
+
+    println(strings.filter(oddLength))
 }
 
+fun length(s: String) = s.length
 
-//fun talk(word: String): String {
-//    System.out.println(word)
-//    return word
-//}
+fun isOdd(x: Int) = x % 2 != 0
 
-fun doTalk(word: String, talk: (word: String) -> String) {
-    var dd = talk(word)
-    System.out.println("hell$dd")
-
+fun <A, B, C> compose(f: (B) -> C, g: (A) -> B): (A) -> C {
+    return { x -> f(g(x)) }
 }
