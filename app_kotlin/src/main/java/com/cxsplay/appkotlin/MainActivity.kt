@@ -7,9 +7,10 @@ import com.cxsplay.appkotlin.common.base.BaseActivity
 import com.cxsplay.appkotlin.databinding.ActivityMainBinding
 import com.cxsplay.appkotlin.entity.Base
 import com.cxsplay.appkotlin.netk.RHelper
-import com.cxsplay.appkotlin.test.expand.click
+import com.cxsplay.appkotlin.expand.click
 import com.cxsplay.appkotlin.ui.AddProductActivity
 import com.cxsplay.appkotlin.ui.ProductsActivity
+import com.cxsplay.appkotlin.ui.transition.Tran1Activity
 import com.orhanobut.logger.Logger
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -51,7 +52,7 @@ class MainActivity : BaseActivity() {
         }
 
         bind.btn4.click(0) {
-            System.out.println("444444")
+            startActivity<Tran1Activity>()
         }
     }
 

@@ -5,17 +5,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.alipay.zoloz.smile2pay.service.Zoloz;
 import com.alipay.zoloz.smile2pay.service.ZolozCallback;
 import com.cxsplay.appkotlin.R;
+import com.cxsplay.appkotlin.common.base.BaseActivity;
 
 import java.util.Map;
 
 import static com.cxsplay.appkotlin.ui.MerchantInfo.mockInfo;
 
-public class FacePayActivity extends AppCompatActivity {
+public class FacePayActivity extends BaseActivity {
     private static final String TAG = "smiletopay";
 
 

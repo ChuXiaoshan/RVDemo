@@ -7,6 +7,7 @@ import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.cxsplay.appkotlin.R
 import com.cxsplay.appkotlin.bean.Product
+import com.cxsplay.appkotlin.common.base.BaseActivity
 import com.cxsplay.appkotlin.databinding.ActivityAddProductBinding
 import com.cxsplay.appkotlin.entity.Base
 import com.cxsplay.appkotlin.netk.RHelper
@@ -15,7 +16,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-class AddProductActivity : AppCompatActivity() {
+class AddProductActivity : BaseActivity() {
 
     private var bind: ActivityAddProductBinding? = null
     private var bean: Product? = null

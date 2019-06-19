@@ -19,6 +19,8 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning"
         tools:targetApi="m">
+        <activity android:name=".ui.transition.Tran2Activity"></activity>
+        <activity android:name=".ui.transition.Tran1Activity" />
         <activity android:name=".ui.FacePayActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

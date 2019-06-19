@@ -1,6 +1,5 @@
 package com.cxsplay.appkotlin.common.base
 
-import androidx.appcompat.app.AppCompatActivity
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.cxsplay.appkotlin.bean.PageBean
@@ -9,7 +8,7 @@ import com.cxsplay.appkotlin.bean.PageBean
  * Created by CxS on 2019/5/24 17:27.
  * Description:
  */
-abstract class BaseListActivity : AppCompatActivity() {
+abstract class BaseListActivity : BaseActivity() {
 
     val pageBean: PageBean = PageBean()
     lateinit var srl: SwipeRefreshLayout
