@@ -108,7 +108,7 @@ public class MatisseDemoActivity extends AppCompatActivity {
         if (requestCode == 1 && resultCode == RESULT_OK) {
             Log.d("Matisse", "Uris: " + Matisse.obtainResult(data));
             Log.d("Matisse", "Paths: " + Matisse.obtainPathResult(data));
-            Log.e("Matisse", "Use the selected photos with original: " + String.valueOf(Matisse.obtainOriginalState(data)));
+            Log.e("Matisse", "Use the selected photos with original: " + Matisse.obtainOriginalState(data));
             cropPic(Matisse.obtainResult(data).get(0));
         }
 

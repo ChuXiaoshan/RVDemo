@@ -70,5 +70,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, ShadowActivity::class.java))
         }
         btn13.setOnClickListener { startActivity<EditTextActivity>() }
+        btn14.setOnClickListener {
+            //todo
+        }
     }
 }

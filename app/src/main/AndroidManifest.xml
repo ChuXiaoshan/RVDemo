@@ -9,15 +9,15 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name=".App"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".ui.EditTextActivity"/>
+        <activity android:name=".ui.EditTextActivity" />
         <activity android:name=".ui.ShadowActivity" />
         <activity android:name=".matisse.MatisseDemoActivity" />
         <activity android:name=".bottomsheet.BSActivity" />

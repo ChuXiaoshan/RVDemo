@@ -2,11 +2,12 @@ package com.cxsplay.vmcoroutines.ui
 
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.cxsplay.vmcoroutines.R
 import com.cxsplay.vmcoroutines.databinding.ActivityProductsBinding
 
-class ProductsActivity : BaseActivity<ProductsModel>() {
+class ProductsActivity : BaseActivity<ProductsModel>(), LifecycleOwner {
 
     private lateinit var bind: ActivityProductsBinding
 
