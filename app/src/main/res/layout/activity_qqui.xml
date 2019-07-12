@@ -10,6 +10,7 @@
         android:padding="10dp">
 
         <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            android:id="@+id/qrb"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:gravity="center"
@@ -20,8 +21,5 @@
             app:qmui_borderWidth="0dp"
             app:qmui_radiusTopLeft="8dp" />
 
-        <com.qmuiteam.qmui.widget.section.QMUIStickySectionLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

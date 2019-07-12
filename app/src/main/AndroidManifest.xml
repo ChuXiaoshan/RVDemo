@@ -17,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".pickerview.PickerViewActivity"></activity>
+        <activity android:name=".qqui.SectionActivity"></activity>
+        <activity android:name=".pickerview.PickerViewActivity" />
         <activity android:name=".ui.EditTextActivity" />
         <activity android:name=".ui.ShadowActivity" />
         <activity android:name=".matisse.MatisseDemoActivity" />
