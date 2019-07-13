@@ -90,9 +90,13 @@ class PickerViewActivity : AppCompatActivity() {
                 return tagBind.root
             }
         }
-        bind.tfl.setOnTagClickListener { view, position, parent ->
-            //            ToastUtils.showShort("${position}")
-            true
+
+        btn_city.click {
+
         }
+    }
+
+    private fun initCity() {
+
     }
 }
